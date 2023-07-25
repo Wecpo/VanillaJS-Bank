@@ -1,2 +1,2 @@
 # VanillaJS-Bank
-Bank on vanilla js
+My study project - Bank on vanilla js
