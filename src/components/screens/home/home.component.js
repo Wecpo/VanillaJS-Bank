@@ -2,6 +2,7 @@ import { BaseScreen } from '@/core/component/base-screen.component'
 import renderService from '@/core/services/render.service'
 import template from './home.template.html'
 import styles from './home.module.css'
+import { $M } from '@/core/mquery/mquery.lib'
 
 export class Home extends BaseScreen {
 	constructor() {
@@ -9,6 +10,9 @@ export class Home extends BaseScreen {
 	}
 	render() {
 		const element = renderService.htmlToElement(template, [], styles)
+
+		$M(element).find(`h1`).css(`color`, `white`)
+
 		return element.outerHTML
 	}
 }
