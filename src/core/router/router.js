@@ -1,6 +1,7 @@
 import { NotFound } from '@/components/screens/not-found/not-found.component'
 import { ROUTES } from './routes.data'
 import { Layout } from '@/components/layout/layout.component'
+import { $M } from '../mquery/mquery.lib'
 
 export class Router {
 	#routes = ROUTES
@@ -53,16 +54,17 @@ export class Router {
 	}
 
 	#render() {
-		const component = new this.#currentRoute.component()
-
+		const component = new this.#currentRoute.component().render()
+		console.log(component)
 		if (!this.#layout) {
 			this.#layout = new Layout({
 				router: this,
-				children: component.render()
-			})
-			document.getElementById('app').innerHTML = this.#layout.render()
+				children: component
+			}).render()
+			// console.log(this.#layout)
+			$M('#app').append(this.#layout)
 		} else {
-			document.querySelector('main').innerHTML = component.render()
+			$M('#content').html('').append(component)
 		}
 	}
 }

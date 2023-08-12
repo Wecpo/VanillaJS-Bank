@@ -1,7 +1,7 @@
 import { BaseScreen } from '@/core/component/base-screen.component'
 import renderService from '@/core/services/render.service'
 import template from './home.template.html'
-import styles from './home.module.css'
+import styles from './home.module.scss'
 import { $M } from '@/core/mquery/mquery.lib'
 
 export class Home extends BaseScreen {
@@ -13,6 +13,6 @@ export class Home extends BaseScreen {
 
 		$M(element).find(`h1`).css(`color`, `white`)
 
-		return element.outerHTML
+		return element
 	}
 }
