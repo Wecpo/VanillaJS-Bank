@@ -4,6 +4,7 @@ import template from './home.template.html'
 import styles from './home.module.scss'
 import { $M } from '@/core/mquery/mquery.lib'
 import { Field } from '@/components/ui/field/field.component'
+import { UserItem } from '@/components/ui/user-item/user-item.component'
 
 export class Home extends BaseScreen {
 	constructor() {
@@ -17,7 +18,16 @@ export class Home extends BaseScreen {
 					name: `test`,
 					placeholder: `enter email`,
 					variant: `green`
-				})
+				}),
+				new UserItem(
+					{
+						avatarPath:
+							'https://cspromogame.ru//storage/upload_images/avatars/897.jpg',
+						name: 'Max'
+					},
+					false,
+					() => alert()
+				)
 			],
 			styles
 		)
