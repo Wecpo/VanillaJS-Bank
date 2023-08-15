@@ -1,8 +1,8 @@
-import ChildComponent from '@core/component/child.component'
-import renderService from '@core/services/render.service'
+import { ChildComponent } from '@/core/component/child.component'
 import styles from './heading.module.scss'
 import template from './heading.template.html'
 import { $M } from '@/core/mquery/mquery.lib'
+import renderService from '@/core/services/render.service'
 
 export class Heading extends ChildComponent {
 	constructor(title = ``) {
