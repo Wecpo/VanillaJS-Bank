@@ -14,6 +14,7 @@ export class StorageService {
 		const value = localStorage.getItem(key)
 		return value ? JSON.parse(value) : null
 	}
+
 	/**
 	 * Saves an item in localStorage with the provided key and value.
 	 *
