@@ -116,6 +116,24 @@ class MQuery {
 	// FORM
 
 	/**
+	 * Set an event listener for the submit event of a form element.
+	 * @param {function(Event): void} onSubmit - The event listener for the form's submit event.
+	 * @returns {MQuery} The current  MQuery instance for chaining.
+	 */
+	submit(onSubmit) {
+		if (this.element.tagName.toLowerCase() === 'form') {
+			this.element.addEventListener('submit', event => {
+				event.preventDefault()
+				onSubmit(event)
+			})
+		} else {
+			throw new Error(`Element must be a form`)
+		}
+
+		return this
+	}
+
+	/**
 	 * Set attributes and event listeners for an input element.
 	 * @param {object} options - An object containing input options.
 	 * @param {function(Event): void} [options.onInput] - The event listener for the input's input event.

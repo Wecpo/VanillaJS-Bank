@@ -1,4 +1,3 @@
-// import renderService from '@core/services/render.service'
 import styles from './button.module.scss'
 import template from './button.template.html'
 import { $M } from '@/core/mquery/mquery.lib'
