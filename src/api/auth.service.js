@@ -21,6 +21,9 @@ export class AuthService {
 					`You have successfully logged in!`
 				)
 			},
+			onError: error => {
+				console.log(error)
+			},
 			method: 'POST'
 		})
 	}

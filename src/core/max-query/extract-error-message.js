@@ -1,5 +1,5 @@
 export function extractErrorMessage(errorData) {
-	return typeof errorData.extractErrorMessage === 'object'
-		? errorData.message[0]
-		: errorData.message
+	return typeof errorData === 'object'
+		? errorData.message
+		: errorData.message[0]
 }
