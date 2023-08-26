@@ -17,6 +17,11 @@ export class Header extends ChildComponent {
 		this.store.addObserver(this)
 
 		this.router = router
+
+		this.userItem = new UserItem({
+			avatarPath: `/`,
+			name: `Max`
+		})
 	}
 
 	update() {
@@ -26,6 +31,7 @@ export class Header extends ChildComponent {
 
 		if (this.user) {
 			authSideElement.show()
+			this.userItem.update(this.user)
 			this.router.navigate(`/`)
 		} else {
 			authSideElement.hide()
@@ -40,11 +46,7 @@ export class Header extends ChildComponent {
 					router: this.router
 				}),
 				Search,
-				new UserItem({
-					avatarPath:
-						'https://cspromogame.ru//storage/upload_images/avatars/897.jpg',
-					name: 'Max'
-				})
+				this.userItem
 			],
 			styles
 		)
