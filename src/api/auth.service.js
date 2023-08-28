@@ -11,20 +11,22 @@ export class AuthService {
 	}
 
 	main(type, body) {
+		console.log(type, body)
 		return maxQuery({
 			path: `${this.#BASE_URL}/${type}`,
 			body,
 			onSuccess: data => {
+				console.log(data)
 				this.store.login(data.user, data.accessToken)
 				this.notificationService.show(
 					'success',
 					`You have successfully logged in!`
 				)
 			},
+			method: 'POST',
 			onError: error => {
 				console.log(error)
-			},
-			method: 'POST'
+			}
 		})
 	}
 }

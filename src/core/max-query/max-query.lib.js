@@ -33,6 +33,7 @@ export async function maxQuery({
 
 	/* ACCESS_TOKEN from LS */
 	const accessToken = new StorageService().getItem(ACCESS_TOKEN_KEY)
+	console.log(accessToken)
 
 	const requestOptions = {
 		method,
@@ -51,6 +52,7 @@ export async function maxQuery({
 	}
 
 	try {
+		console.log(url, requestOptions)
 		const response = await fetch(url, requestOptions)
 
 		if (response.ok) {
@@ -70,9 +72,9 @@ export async function maxQuery({
 	} catch (errorData) {
 		const errorMessage = extractErrorMessage(errorData)
 
-		// if (errorMessage) {
-		// 	onError(errorMessage)
-		// }
+		if (errorMessage) {
+			onError(errorMessage)
+		}
 		new NotificationService().show('error', errorMessage)
 	} finally {
 		isLoading = false

@@ -13,7 +13,10 @@ export class CardService {
 	byUser(onSuccess) {
 		return maxQuery({
 			path: `${this.#BASE_URL}/by-user`,
-			onSuccess
+			onSuccess,
+			onError: error => {
+				console.log(error)
+			}
 		})
 	}
 

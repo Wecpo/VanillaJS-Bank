@@ -143,6 +143,20 @@ class MQuery {
 	// FORM
 
 	/**
+	 * Gets or sets the value of an input element.
+	 * @param {string} [newValue] - The new value to set for the input element. If not provided, the method returns the current value.
+	 * @returns {string | MQuery} - If newValue is provided, returns the MQuery instance. Otherwise, returns the current value of the input element.
+	 */
+	value(newValue) {
+		if (typeof newValue === 'undefined') {
+			return this.element.value
+		} else {
+			this.element.value = newValue
+			return this
+		}
+	}
+
+	/**
 	 * Set an event listener for the submit event of a form element.
 	 * @param {function(Event): void} onSubmit - The event listener for the form's submit event.
 	 * @returns {MQuery} The current  MQuery instance for chaining.
@@ -188,7 +202,7 @@ class MQuery {
 	 * @returns {MQuery} The current MQuery instance for chaining.
 	 */
 	numberInput(limit) {
-		if (this.element.tagName !== `input` || this.element.type !== `number`)
+		if (this.element.tagName !== `input` && this.element.type !== 'number')
 			throw new Error(`Element must be an input with type "number"`)
 
 		this.element.addEventListener(`input`, event => {
@@ -305,6 +319,19 @@ class MQuery {
 			this.element.setAttribute(attributeName, value)
 			return this
 		}
+	}
+
+	/**
+	 * @param {string} attrName - The name of the attribute to remove.
+	 * @returns {MQuery} - Returns the MQuery instance.
+	 */
+	removeAttr(attrName) {
+		if (typeof attrName !== 'string') {
+			throw new Error('Attribute name must be a string')
+		}
+
+		this.element.removeAttribute(attrName)
+		return this
 	}
 }
 
