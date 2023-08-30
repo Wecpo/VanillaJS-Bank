@@ -88,7 +88,6 @@ export class CardInfo extends ChildComponent {
 	fetchData() {
 		this.cardService.byUser(data => {
 			if (data?.id) {
-				console.log(data)
 				this.card = data
 				this.fillElements()
 				this.store.updateCard(data)
