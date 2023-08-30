@@ -4,7 +4,6 @@ import styles from './layout.module.scss'
 import { $M } from '@/core/mquery/mquery.lib'
 import { Header } from './header/header.component'
 import { ChildComponent } from '@/core/component/child.component'
-import { NotificationService } from '@/core/services/notification.service'
 import { Notification } from './notification/notification.component'
 
 export class Layout extends ChildComponent {

@@ -9,7 +9,7 @@
  * @param {Object} [options.headers = {}] - Additional headers to include with the request.
  * @param {Function} [options.onSuccess = null] - Callback function to be called on successful response.
  * @param {Function} [options.onError = null] - Callback function to be called on error response.
- * @returns {Promise<{isLoading: boolean, error: string|null, data: any|null}>} An object containing the loading state, error, and data from the response.
+ * @returns {Promise<{isLoading: boolean, error: string | null, data: any | null}>} An object containing the loading state, error, and data from the response.
  */
 
 import { SERVER_URL } from '@/config/url.config'
@@ -31,9 +31,7 @@ export async function maxQuery({
 		data = null
 	const url = `${SERVER_URL}/api${path}`
 
-	/* ACCESS_TOKEN from LS */
 	const accessToken = new StorageService().getItem(ACCESS_TOKEN_KEY)
-	console.log(accessToken)
 
 	const requestOptions = {
 		method,
@@ -52,27 +50,16 @@ export async function maxQuery({
 	}
 
 	try {
-		console.log(url, requestOptions)
 		const response = await fetch(url, requestOptions)
 
-		if (response.ok) {
-			data = await response.json()
-			if (onSuccess) {
-				onSuccess(data)
-			}
-		} else {
-			const errorData = await response.json()
-			const errorMessage = extractErrorMessage(errorData)
-
-			if (errorMessage) {
-				onError(errorMessage)
-			}
-			new NotificationService().show('error', errorMessage)
+		data = await response.json()
+		if (onSuccess) {
+			onSuccess(data)
 		}
 	} catch (errorData) {
 		const errorMessage = extractErrorMessage(errorData)
 
-		if (errorMessage) {
+		if (errorMessage && onError) {
 			onError(errorMessage)
 		}
 		new NotificationService().show('error', errorMessage)

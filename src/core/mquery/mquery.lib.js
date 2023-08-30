@@ -221,7 +221,7 @@ class MQuery {
 	creditCardInput() {
 		const limit = 16
 
-		if (this.element.tagName !== `input` || this.element.type !== `text`)
+		if (this.element.tagName !== `input` && this.element.type !== `text`)
 			throw new Error(`Element must be an input with type "text"`)
 
 		this.element.addEventListener(`input`, event => {
