@@ -7,10 +7,7 @@ import { Store } from '@/core/store/store'
 import { TransactionService } from '@/api/transaction.service'
 import { $M } from '@/core/mquery/mquery.lib'
 import { TransactionItem } from './transaction-item/transaction-item.component'
-import {
-	BALANCE_UPDATED,
-	TRANSACTION_COMPLETED
-} from '@/constants/event.constants'
+import { TRANSACTION_COMPLETED } from '@/constants/event.constants'
 import {
 	LOADER_SELECTOR,
 	Loader

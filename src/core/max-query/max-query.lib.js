@@ -59,7 +59,7 @@ export async function maxQuery({
 	} catch (errorData) {
 		const errorMessage = extractErrorMessage(errorData)
 
-		if (errorMessage && onError) {
+		if (onError) {
 			onError(errorMessage)
 		}
 		new NotificationService().show('error', errorMessage)
