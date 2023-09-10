@@ -51,18 +51,17 @@ export async function maxQuery({
 
 	try {
 		const response = await fetch(url, requestOptions)
-
 		data = await response.json()
-		if (onSuccess) {
+
+		if (!data.error) {
 			onSuccess(data)
+		} else {
+			new NotificationService().show('error', data.message)
 		}
 	} catch (errorData) {
-		const errorMessage = extractErrorMessage(errorData)
-
 		if (onError) {
 			onError(errorMessage)
 		}
-		new NotificationService().show('error', errorMessage)
 	} finally {
 		isLoading = false
 	}
