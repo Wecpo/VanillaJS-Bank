@@ -31,8 +31,6 @@ export class Actions extends ChildComponent {
 			this.notificationService.show('error', 'You need authorization!')
 		}
 
-		$M(event.target).text('Sending...').attr('disabled', true)
-
 		const inputElement = $M(this.element).find('input')
 		const amount = inputElement.value()
 
@@ -40,7 +38,7 @@ export class Actions extends ChildComponent {
 			validationService.showError($M(this.element).find('label'))
 			return
 		}
-
+		$M(event.target).text('Sending...').attr('disabled', true)
 		this.cardService.updateBalance(amount, type, () => {
 			inputElement.value('')
 
@@ -48,7 +46,7 @@ export class Actions extends ChildComponent {
 			document.dispatchEvent(balanceUpdated)
 		})
 
-		$M(event.target).removeAttr('string').text(type)
+		$M(event.target).removeAttr('disabled').text(type)
 	}
 
 	render() {
